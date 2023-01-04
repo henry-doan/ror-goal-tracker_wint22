@@ -7,6 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { initMiddleware } from 'devise-axios';
 import AuthProvider from './providers/AuthProvider';
 import './components/styles/fonts/Rajdhani/Rajdhani-Regular.ttf';
+import GoalProvider from './providers/GoalProvider';
 
 initMiddleware();
 
@@ -15,7 +16,9 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <App />
+        <GoalProvider>
+          <App />
+        </GoalProvider>
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>

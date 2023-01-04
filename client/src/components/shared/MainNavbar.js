@@ -12,6 +12,9 @@ const MainNavbar = ({ user, handleLogout }) => {
           <Link to='/dash'>
             <li>Dashboard</li>
           </Link>
+          <Link to='/goals'>
+            <li>Goals</li>
+          </Link>
           <MainButton onClick={() => handleLogout()}>
             Logout
           </MainButton>
