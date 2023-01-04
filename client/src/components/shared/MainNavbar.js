@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { AuthConsumer } from "../../providers/AuthProvider";
+import { MainButton } from "../styles/shared";
 
 const MainNavbar = ({ user, handleLogout }) => {
 
@@ -11,9 +12,9 @@ const MainNavbar = ({ user, handleLogout }) => {
           <Link to='/dash'>
             <li>Dashboard</li>
           </Link>
-          <button onClick={() => handleLogout()}>
+          <MainButton onClick={() => handleLogout()}>
             Logout
-          </button>
+          </MainButton>
         </>
       )
     } else {
