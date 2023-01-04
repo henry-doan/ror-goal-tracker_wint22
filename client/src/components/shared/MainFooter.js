@@ -1,8 +1,9 @@
+import { FooterContainer } from "../styles/shared";
 
 const MainFooter = () => (
-  <footer>
-    <h1>© {new Date().getFullYear()} All Rights Reserved.</h1>
-  </footer>
+  <FooterContainer>
+    <h5>© {new Date().getFullYear()} All Rights Reserved.</h5>
+  </FooterContainer>
 )
 
 export default MainFooter;
