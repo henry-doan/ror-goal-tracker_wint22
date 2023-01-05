@@ -10,11 +10,15 @@ const GoalProvider = ({ children }) => {
   const navigate = useNavigate()
 
   const getAllGoals = () => {
-    
+    axios.get('/api/goals')
+      .then(res => setGoals(res.data))
+      .catch( err => console.log(err))
   }
 
   const addGoal = (goal) => {
-
+    axios.post('/api/goals', { goal })
+      .then(res => setGoals([...goals, res.data]))
+      .catch( err => console.log(err))
   }
 
   const updateGoal = (id, goal) => {

@@ -9,6 +9,7 @@ import Dashboard from './components/auth/Dashboard';
 import FetchUser from './components/auth/FetchUser';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import Goals from './components/goals/Goals';
+import GoalShow from './components/goals/GoalShow';
 
 const App = () => (
   <>
@@ -20,6 +21,7 @@ const App = () => (
           <Route path='/' element={<ProtectedRoute />}>
             <Route path='/dash' element={<Dashboard />} />
             <Route path='/goals' element={<Goals />} />
+            <Route path='/goals/:id' element={<GoalShow />} />
           </Route>
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />

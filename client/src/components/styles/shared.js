@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
 export const FooterContainer = styled.footer`
-  position: absolute;
-  bottom: 0;
-  width: 100%;
   height: 2.5rem; 
   text-align: center;
   background: #260101;
   color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
 `
 
 export const MainButton = styled.button`
@@ -51,3 +52,31 @@ export const HomeHeaderTxt = styled.div`
 // .The-Black-and-Red-3-rgba { color: rgba(135, 242, 231, 1); }
 // .The-Black-and-Red-4-rgba { color: rgba(39, 89, 80, 1); }
 // .The-Black-and-Red-5-rgba { color: rgba(38, 0, 0, 1); }
+
+export const MainCard = styled.div`
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 40%;
+
+  &:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    cursor: pointer;
+    border: 5px solid #41BFB3;
+  }
+`
+
+export const MainCardContainer = styled.div`
+  padding: 2px 16px;
+  text-align: center;
+  color: #41BFB3;
+`
+
+export const CardRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
+export const CardCol = styled.div`
+  width: 33%;
+`
+
