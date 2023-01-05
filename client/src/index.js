@@ -8,6 +8,7 @@ import { initMiddleware } from 'devise-axios';
 import AuthProvider from './providers/AuthProvider';
 import './components/styles/fonts/Rajdhani/Rajdhani-Regular.ttf';
 import GoalProvider from './providers/GoalProvider';
+import UsergoalProvider from './providers/UserGoalProvider';
 
 initMiddleware();
 
@@ -17,7 +18,9 @@ root.render(
     <BrowserRouter>
       <AuthProvider>
         <GoalProvider>
-          <App />
+          <UsergoalProvider>
+            <App />
+          </UsergoalProvider>
         </GoalProvider>
       </AuthProvider>
     </BrowserRouter>

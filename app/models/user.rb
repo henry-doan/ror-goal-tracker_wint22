@@ -8,5 +8,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
 
+  has_many :usergoals, dependent: :destroy
+  has_many :goals, through: :usergoals
   validates :fname, :lname, :age, presence: true
 end
