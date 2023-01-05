@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const FooterContainer = styled.footer`
   height: 2.5rem; 
@@ -57,6 +58,7 @@ export const MainCard = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   width: 40%;
+  height: 400px;
 
   &:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
@@ -73,10 +75,43 @@ export const MainCardContainer = styled.div`
 
 export const CardRow = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
 `
 
 export const CardCol = styled.div`
-  width: 33%;
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 30%;
 `
 
+export const MainContainer = styled.div`
+  padding: 100px 50px;
+  margin-bottom: 100px;
+`
+
+export const CardImg = styled.img`
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+`
+
+export const MainNavUl = styled.ul`
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #275950;
+  display: flex;
+  flex-direction: row;
+`
+
+export const MainNavLink = styled(Link)`
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 40px 16px;
+  text-decoration: none;
+`

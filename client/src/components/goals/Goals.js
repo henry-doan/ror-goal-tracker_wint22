@@ -2,7 +2,7 @@ import { GoalConsumer } from "../../providers/GoalProvider";
 import { useEffect, useState } from "react";
 import GoalList from './GoalList';
 import GoalForm from './GoalForm';
-import { MainButton } from "../styles/shared";
+import { MainButton, MainContainer } from "../styles/shared";
 
 const Goals = ({ getAllGoals, goals }) => {
   const [adding, setAdd] = useState(false);
@@ -12,7 +12,7 @@ const Goals = ({ getAllGoals, goals }) => {
   }, [])
 
   return (
-    <>
+    <MainContainer>
       {
         adding ?
         <>
@@ -28,7 +28,7 @@ const Goals = ({ getAllGoals, goals }) => {
       }
       <h1>All Goals</h1>
       <GoalList goals={goals} />
-    </>
+    </MainContainer>
   )
 }
 

@@ -22,11 +22,27 @@ const GoalProvider = ({ children }) => {
   }
 
   const updateGoal = (id, goal) => {
-
+    axios.put(`/api/goals/${id}`, { goal })
+      .then( res => {
+        const newUpdatedGoals = goals.map(g => {
+          if (g.id === id) {
+            return res.data
+          }
+          return g 
+        })
+        setGoals(newUpdatedGoals)
+        navigate('/goals')
+      })
+    .catch( err => console.log(err))
   }
 
   const deleteGoal = (id) => {
-
+    axios.delete(`/api/goals/${id}`)
+      .then(res => {
+        setGoals( goals.filter(g => g.id !== id ))
+        navigate('/goals')
+      })
+      .catch( err => console.log(err))
   }
 
   return(

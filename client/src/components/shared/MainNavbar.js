@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { AuthConsumer } from "../../providers/AuthProvider";
-import { MainButton } from "../styles/shared";
+import { MainButton, MainNavUl, MainNavLink } from "../styles/shared";
 
 const MainNavbar = ({ user, handleLogout }) => {
 
@@ -9,38 +9,40 @@ const MainNavbar = ({ user, handleLogout }) => {
     if (user) {
       return (
         <>
-          <Link to='/dash'>
+          <MainNavLink to='/dash'>
             <li>Dashboard</li>
-          </Link>
-          <Link to='/goals'>
+          </MainNavLink>
+          <MainNavLink to='/goals'>
             <li>Goals</li>
-          </Link>
+          </MainNavLink>
           <MainButton onClick={() => handleLogout()}>
             Logout
           </MainButton>
         </>
       )
     } else {
-      <>
-        <Link to='/login'>
-          <li>Login</li>
-        </Link>
-        <Link to='/register'>
-          <li>Register</li>
-        </Link>
-      </>
+      return(
+        <>
+          <MainNavLink to='/login'>
+            <li>Login</li>
+          </MainNavLink>
+          <MainNavLink to='/register'>
+            <li>Register</li>
+          </MainNavLink>
+        </>
+      )
     }
   }
 
   return(
     <>
       <nav>
-        <ul>
-          <Link to='/'>
+        <MainNavUl>
+          <MainNavLink to='/'>
             <li>Home</li>
-          </Link>
+          </MainNavLink>
           { rightNavItems() }
-        </ul>
+        </MainNavUl>
       </nav>
     </>
   )
