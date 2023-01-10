@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const GoalConsumer = ({ goals }) => (
   <CardRow>
     { goals.map( g =>
-        <CardCol>
+        <CardCol key={g.id}>
           <Link 
             to={`/goals/${g.id}`}
             state={{ ...g }}

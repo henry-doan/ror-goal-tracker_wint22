@@ -5,9 +5,11 @@ import { GoalConsumer } from "../../providers/GoalProvider";
 import GoalForm from './GoalForm';
 import { useState } from 'react';
 import { AuthConsumer } from "../../providers/AuthProvider";
+import UsergoalForm from '../usergoals/UsergoalForm';
 
 const GoalShow = ({ deleteGoal, user }) => {
   const [editing, setEdit] = useState(false);
+  const [addEntry, setAddEntry] = useState(false);
 
   const { id } = useParams();
   const location = useLocation();
@@ -43,6 +45,23 @@ const GoalShow = ({ deleteGoal, user }) => {
                 {end_time}
               </Moment>
             </p>
+            <MainButton
+              onClick={() => setEdit(true)}
+            >
+              Edit
+            </MainButton>
+            { addEntry ?
+                <UsergoalForm 
+                  setAddEntry={setAddEntry}
+                  goalId={id}
+                />
+              : 
+                <MainButton
+                  onClick={() => setAddEntry(true)}
+                >
+                  Add Entry
+                </MainButton>
+            }
             {
               author === `${user.fname} ${user.lname}` 
               ?

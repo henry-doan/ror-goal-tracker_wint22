@@ -7,13 +7,27 @@ export const UsergoalConsumer = UsergoalContext.Consumer;
 
 const UsergoalProvider = ({ children }) => {
   const [usergoals, setUsergoals] = useState([])
+  const navigate = useNavigate();
 
   const getAllUsergoals = () => {
-
+    axios.get('/api/usergoals')
+      .then(res => {
+        setUsergoals(res.data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   const addUsergoal = (usergoal) => {
-
+    axios.post('/api/usergoals', { usergoal })
+      .then(res => {
+        setUsergoals([...usergoals, res.data])
+        navigate('/dash')
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   const updateUsergoal = (id, usergoal) => {
