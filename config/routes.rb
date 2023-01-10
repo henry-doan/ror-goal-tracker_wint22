@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :goals
 
     resources :usergoals
+
+    get '/numofgoals', to: 'users#numofgoals'
   end
 
 
