@@ -31,11 +31,31 @@ const UsergoalProvider = ({ children }) => {
   }
 
   const updateUsergoal = (id, usergoal) => {
-
+    axios.put(`/api/usergoals/${id}`, { usergoal })
+      .then( res => {
+        const newUpdatedUsergoals = usergoals.map( ug =>{
+          if (ug.id === id) {
+            return res.data
+          }
+          return ug
+        })
+        setUsergoals(newUpdatedUsergoals)
+        window.location.reload()
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   const deleteUsergoal = (id) => {
-
+    axios.delete(`/api/usergoals/${id}`)
+      .then(res => {
+        usergoals.filter( ug => ug.id !== id )
+        window.location.reload()
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   return(

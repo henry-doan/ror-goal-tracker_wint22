@@ -1,19 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { UsergoalConsumer } from "../../providers/UserGoalProvider";
 import { MainButton } from '../styles/shared';
 
-const Usergoalform = ({ addUsergoal, goalId }) => {
+const Usergoalform = ({ addUsergoal, goalId, id, entry, when, setEdit, updateUsergoal }) => {
   const [usergoal, setUsergoal] = useState({ entry: '', when: '', goal_id: goalId })
+
+  useEffect( () => {
+    if (id) {
+      setUsergoal({ entry, when })
+    }
+  }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    addUsergoal(usergoal)
+    if (id) {
+      updateUsergoal(id, usergoal)
+      setEdit(false)
+    } else {
+      addUsergoal(usergoal)
+    }
     setUsergoal({ entry: '', when: '', goal_id: goalId })
   }
 
   return (
     <>
-      <h1>Creating a goal entry</h1>
+      <h1>{id ? "Updating" : "Creating"} a goal entry</h1>
       <form onSubmit={handleSubmit}>
         <label>What did you do to complete the goal?</label>
         <input 
