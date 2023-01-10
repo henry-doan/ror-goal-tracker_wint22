@@ -1,6 +1,7 @@
 import { UsergoalConsumer } from "../../providers/UserGoalProvider";
 import { useEffect } from "react";
 import UsergoalShow from './UsergoalShow';
+import { MainContainer, MainTable, MainTh } from "../styles/shared";
 
 const UsergoalList = ({ getAllUsergoals, usergoals, deleteUsergoal, editUsergoal }) => {
   
@@ -9,9 +10,15 @@ const UsergoalList = ({ getAllUsergoals, usergoals, deleteUsergoal, editUsergoal
   }, [])
 
   return (
-    <>
+    <MainContainer>
       <h1>All UserGoals</h1>
-      <ul>
+      <MainTable>
+        <tr>
+          <MainTh>Entry</MainTh>
+          <MainTh>When</MainTh>
+          <MainTh>Goal</MainTh>
+          <MainTh>Actions</MainTh>
+        </tr>
         { usergoals.map( ug => 
           <UsergoalShow 
             key={ug.id} 
@@ -20,8 +27,8 @@ const UsergoalList = ({ getAllUsergoals, usergoals, deleteUsergoal, editUsergoal
             editUsergoal={editUsergoal}
           />
         )}
-      </ul>
-    </>
+      </MainTable>
+    </ MainContainer>
   )
 }
 

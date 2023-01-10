@@ -1,4 +1,4 @@
-import { MainButton } from "../styles/shared";
+import { MainButton, MainTd, } from "../styles/shared";
 import Moment from "react-moment";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -16,7 +16,7 @@ const UsergoalShow = ({ id, entry, when, goal_id, deleteUsergoal, editUsergoal }
   }, [])
 
   return(
-    <li>
+    <tr>
       { editing ?
         <>
           <button onClick={() => setEdit(false)}>
@@ -33,18 +33,20 @@ const UsergoalShow = ({ id, entry, when, goal_id, deleteUsergoal, editUsergoal }
         </>
         :
         <>
-          <h4>{entry}</h4>
-          <h4><Moment format="MM/DD/YYYY hh:mm a">{when}</Moment></h4>
-          <h4>Goal: {gameName}</h4>
-          <MainButton onClick={() => setEdit(true)}>
-            Edit
-          </MainButton>
-          <MainButton onClick={() => deleteUsergoal(id)}>
-            Delete
-          </MainButton> 
+          <MainTd>{entry}</MainTd>
+          <MainTd><Moment format="MM/DD/YYYY hh:mm a">{when}</Moment></MainTd>
+          <MainTd>Goal: {gameName}</MainTd>
+          <MainTd>
+            <MainButton onClick={() => setEdit(true)}>
+              Edit
+            </MainButton>
+            <MainButton onClick={() => deleteUsergoal(id)}>
+              Delete
+            </MainButton> 
+          </MainTd>
         </>
       }
-    </li>
+    </tr>
   )
 }
 

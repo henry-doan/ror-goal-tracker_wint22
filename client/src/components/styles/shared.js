@@ -115,3 +115,21 @@ export const MainNavLink = styled(Link)`
   padding: 40px 16px;
   text-decoration: none;
 `
+
+export const MainTable = styled.table`
+  width: 100%;
+  background: linear-gradient(to right, rgba(42, 140, 130, 1), rgba(38, 0, 0, 1));
+  color: white;
+`
+
+export const MainTd = styled.td`
+  padding: 8px;
+  text-align: center;
+  border-bottom: solid 1px rgba(255,255,255,0.1);
+`
+
+export const MainTh = styled.th`
+  padding: 8px;
+  font-size: 30px;
+  background-color: rgba(38, 0, 0, 1);
+`
