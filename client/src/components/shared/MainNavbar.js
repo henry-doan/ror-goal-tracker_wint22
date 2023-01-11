@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { AuthConsumer } from "../../providers/AuthProvider";
 import { MainButton, MainNavUl, MainNavLink } from "../styles/shared";
+import Logo from '../../imgs/flatlogo.png';
 
 const MainNavbar = ({ user, handleLogout }) => {
 
@@ -11,6 +12,9 @@ const MainNavbar = ({ user, handleLogout }) => {
         <>
           <MainNavLink to='/dash'>
             <li>Dashboard</li>
+          </MainNavLink>
+          <MainNavLink to='/profile'>
+            <li>Profile</li>
           </MainNavLink>
           <MainNavLink to='/goals'>
             <li>Goals</li>
@@ -39,7 +43,7 @@ const MainNavbar = ({ user, handleLogout }) => {
       <nav>
         <MainNavUl>
           <MainNavLink to='/'>
-            <li>Home</li>
+            <img src={Logo} alt='logo' height='60px' />
           </MainNavLink>
           { rightNavItems() }
         </MainNavUl>

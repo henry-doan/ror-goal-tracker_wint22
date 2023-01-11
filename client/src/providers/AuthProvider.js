@@ -45,6 +45,24 @@ const AuthProvider = ({ children }) => {
       })
   }
 
+  const updateUser = (updateUserObj) => {
+    let data = new FormData()
+    data.append('file', updateUserObj.image)
+    data.append('fname', updateUserObj.fname)
+    data.append('lname', updateUserObj.lname)
+    data.append('email', updateUserObj.email)
+    data.append('age', updateUserObj.age)
+
+    axios.put(`/api/users/${user.id}`, data )
+      .then( res => {
+        setUser(res.data)
+        navigate('/dash')
+      })
+      .catch( err => {
+        console.log(err)
+      })
+  }
+
   return (
     <AuthContext.Provider value={{
       user, 
@@ -53,6 +71,7 @@ const AuthProvider = ({ children }) => {
       handleLogout,
       authenticated: user !== null,
       setUser: (user) => setUser(user),
+      updateUser, 
     }}>
       { children }
     </AuthContext.Provider>

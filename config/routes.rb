@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     resources :usergoals
 
     get '/numofgoals', to: 'users#numofgoals'
+
+    resources :users, only: :update
+
   end
 
 
