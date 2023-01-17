@@ -9,8 +9,9 @@ class Api::UsersController < ApplicationController
     current_user.lname = params[:lname] ? params[:lname] : current_user.lname
     current_user.email = params[:email] ? params[:email] : current_user.email
     current_user.age = params[:age] ? params[:age] : current_user.age
-
+    
     file = params[:file]
+    
     if file && file != '' && file != "undefined"
       begin
         ext = File.extname(file.tempfile)
