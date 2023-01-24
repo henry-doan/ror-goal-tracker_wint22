@@ -9,6 +9,7 @@ import AuthProvider from './providers/AuthProvider';
 import './components/styles/fonts/Rajdhani/Rajdhani-Regular.ttf';
 import GoalProvider from './providers/GoalProvider';
 import UsergoalProvider from './providers/UserGoalProvider';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 initMiddleware();
 

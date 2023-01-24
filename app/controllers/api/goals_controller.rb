@@ -2,7 +2,7 @@ class Api::GoalsController < ApplicationController
   before_action :set_goal, only: [:show, :update, :destroy]
 
   def index
-    render json: Goal.all
+    paginate json: Goal.all
   end
 
   def show

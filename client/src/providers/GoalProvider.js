@@ -7,17 +7,28 @@ export const GoalConsumer = GoalContext.Consumer;
 
 const GoalProvider = ({ children }) => {
   const [goals, setGoals] = useState([])
+  const [pagination, setPagination] = useState(1)
+  const [headers, setHeaders] = useState({})
   const navigate = useNavigate()
 
-  const getAllGoals = () => {
-    axios.get('/api/goals')
-      .then(res => setGoals(res.data))
+  const getAllGoals = (page = 1) => {
+    axios.get(`/api/goals?page=${page}&per_page=12`)
+      .then(res => {
+        const { headers, data } = res
+        const totalPages = Math.ceil(headers['x-total'] / headers['x-per-page'])
+        setPagination(totalPages)
+        setGoals(data)
+        setHeaders(headers)
+      })
       .catch( err => console.log(err))
   }
 
   const addGoal = (goal) => {
     axios.post('/api/goals', { goal })
-      .then(res => setGoals([...goals, res.data]))
+      .then(res => {
+        setGoals([...goals, res.data])
+        setHeaders(res.headers)
+      })
       .catch( err => console.log(err))
   }
 
@@ -32,6 +43,7 @@ const GoalProvider = ({ children }) => {
         })
         setGoals(newUpdatedGoals)
         navigate('/goals')
+        setHeaders(res.headers)
       })
     .catch( err => console.log(err))
   }
@@ -41,6 +53,7 @@ const GoalProvider = ({ children }) => {
       .then(res => {
         setGoals( goals.filter(g => g.id !== id ))
         navigate('/goals')
+        setHeaders(res.headers)
       })
       .catch( err => console.log(err))
   }
@@ -52,6 +65,8 @@ const GoalProvider = ({ children }) => {
       addGoal,
       updateGoal,
       deleteGoal,
+      pagination,
+      headers,
     }}>
       { children }
     </GoalContext.Provider>

@@ -63,7 +63,7 @@ const GoalForm = ({ setAdd, addGoal, user, id, target, author, start_time, end_t
               type="checkbox"
               name='complete'
               value={goal.complete}
-              onChange={(e) => setGoal({...goal, complete: e.value.checked })}
+              onChange={(e) => setGoal({...goal, complete: e.target.checked })}
             />
           </>
           : 
